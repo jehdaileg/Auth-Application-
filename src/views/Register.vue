@@ -22,6 +22,11 @@
 </template>
 
 <script>
+
+import firebase from 'firebase';
+
+import axios from 'axios';
+
 export default {
 
     data() {
@@ -33,15 +38,28 @@ export default {
     },
 
     methods: {
-        registered(){
-           
-        }
-    },
-    
+        async registered(){
+
+            try {
+
+               const user = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
+               
+               this.$router.replace({name : "Secret"});
+
+               console.log(user)
+
+            }catch(err){
+                console.log(err)
+            }
+
+        },
+     
+}
+
 }
 </script>
 
-<style scoped>
+<style>
 
 .error {
     color: red;

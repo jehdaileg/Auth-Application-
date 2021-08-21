@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import firebase from "firebase/app";
 
+
 // Your web app's Firebase configuration
 const  firebaseConfig = {
     apiKey: "AIzaSyDgjuifIx25Z-rqwp5L4C8u9DBfyt_wZyM",
@@ -15,10 +16,23 @@ const  firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  let app;
+
+  firebase.auth().onAuthStateChanged(user => {
+
+    console.log(user)
+
+    if(!app){
+      
+         app = 
+
+         createApp(App)
+         .use(store)
+         .use(router)
+         .mount("#app");
+         
+    }
+
+  });
   
-
-
-createApp(App)
-.use(store)
-.use(router)
-.mount("#app");
